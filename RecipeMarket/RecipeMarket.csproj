@@ -197,7 +197,13 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Kategoria.cs" />
+    <Compile Include="Models\Komentarz.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Produkt.cs" />
+    <Compile Include="Models\Przepis.cs" />
+    <Compile Include="Models\Skladnik.cs" />
+    <Compile Include="Models\StatusAkceptacji.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
