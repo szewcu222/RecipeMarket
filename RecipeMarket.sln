@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeMarket", "RecipeMarket\RecipeMarket.csproj", "{88F2EC7B-0094-4CCB-AE38-C8AB9012F01B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88F2EC7B-0094-4CCB-AE38-C8AB9012F01B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88F2EC7B-0094-4CCB-AE38-C8AB9012F01B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88F2EC7B-0094-4CCB-AE38-C8AB9012F01B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88F2EC7B-0094-4CCB-AE38-C8AB9012F01B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {161F4ABC-5761-4442-82E5-E6A21823FB30}
+	EndGlobalSection
+EndGlobal
