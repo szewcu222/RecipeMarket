@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecipeMarket.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,12 @@ namespace RecipeMarket.Controllers
 {
     public class HomeController : Controller
     {
+        private PrzepisyContext db = new PrzepisyContext();
+
         public ActionResult Index()
         {
             return View();
+            
         }
 
         public ActionResult About()
