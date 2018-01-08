@@ -15,6 +15,11 @@ namespace RecipeMarket.DAL
         {
         }
 
+        static PrzepisyContext()
+        {
+            Database.SetInitializer<PrzepisyContext>(new InitialDb());
+        }
+
         public DbSet<Kategoria> Kategorie { get; set; }
         public DbSet<Komentarz> Komentarze { get; set; }
         public DbSet<Produkt> Produkty { get; set; }
