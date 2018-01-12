@@ -197,6 +197,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801082117107_InitialCreate.cs" />
+    <Compile Include="Migrations\201801082117107_InitialCreate.Designer.cs">
+      <DependentUpon>201801082117107_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801121659248_dodanieMarkoskladnikow.cs" />
+    <Compile Include="Migrations\201801121659248_dodanieMarkoskladnikow.Designer.cs">
+      <DependentUpon>201801121659248_dodanieMarkoskladnikow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801121723599_usuniecieMakrosklanikow.cs" />
+    <Compile Include="Migrations\201801121723599_usuniecieMakrosklanikow.Designer.cs">
+      <DependentUpon>201801121723599_usuniecieMakrosklanikow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Kategoria.cs" />
@@ -271,7 +284,17 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201801082117107_InitialCreate.resx">
+      <DependentUpon>201801082117107_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801121659248_dodanieMarkoskladnikow.resx">
+      <DependentUpon>201801121659248_dodanieMarkoskladnikow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801121723599_usuniecieMakrosklanikow.resx">
+      <DependentUpon>201801121723599_usuniecieMakrosklanikow.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>

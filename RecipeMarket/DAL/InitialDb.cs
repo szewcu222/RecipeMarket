@@ -7,12 +7,13 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Data.Entity.Migrations;
+using RecipeMarket.Migrations;
 
 namespace RecipeMarket.DAL
 {
-    public class InitialDb : DropCreateDatabaseAlways<PrzepisyContext>
+    public class InitialDb : MigrateDatabaseToLatestVersion<PrzepisyContext, Configuration>
     {
-        protected override void Seed(PrzepisyContext context)
+        public static void SeedPrzepisy(PrzepisyContext context)
         {
             var UserManager = new UserManager<Uzytkownik>(new UserStore<Uzytkownik>(context));
             var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
@@ -118,7 +119,6 @@ namespace RecipeMarket.DAL
             };
             komentarze.ForEach(u => context.Komentarze.AddOrUpdate(u));
             context.SaveChanges();
-            base.Seed(context);
         }
     }
 }
