@@ -20,21 +20,23 @@
             <th>
                 @Html.DisplayNameFor(model => model.FirstOrDefault().DataDodania)
             </th>
+            <th></th>
         </tr>
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NazwaPrzepisu)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Kategorie.FirstOrDefault().NazwaKategorii)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataDodania)
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NazwaPrzepisu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kategorie.FirstOrDefault().NazwaKategorii)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataDodania)
+            </td>
+            <td>@Html.ActionLink("Pokaż szczegóły", "Details", "Przepisy", new { id = item.PrzepisID }, null) </td>
+        </tr>
         }
 
     </table>

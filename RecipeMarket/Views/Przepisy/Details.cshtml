@@ -1,0 +1,123 @@
+﻿@model RecipeMarket.Models.Przepis
+
+@{
+    ViewBag.Title = "Szczegóły";
+}
+
+<h2>Szczegóły</h2>
+
+
+<div class="page-header">
+    <h1>
+        @Html.DisplayFor(model => model.NazwaPrzepisu)
+
+        @if (Model.Kategorie.FirstOrDefault() == null)
+        {
+            <small>
+                "Brak kategorii
+            </small>
+        }
+        else
+        {
+            <small>
+                @Html.DisplayFor(model => model.Kategorie.FirstOrDefault().NazwaKategorii)
+            </small>
+        }
+    </h1>
+    <button class="btn btn-link"><span class="glyphicon glyphicon-chevron-left"></span> @Html.ActionLink("Powrót do Indexu", "Index", "Home")</button>
+    
+</div>
+
+<div class="col-md-6">
+    <p><strong>@Html.DisplayNameFor(model => model.TrescPrzepisu)</strong> <br /></p>
+    <p> @Html.Raw(Model.TrescPrzepisu)</p>
+</div>
+
+<div class="col-md-6">
+    <div>
+        <p><strong>Dodane przez:</strong> @Html.DisplayFor(model => model.Uzytkownicy.Email)</p>
+
+        <p><strong>@Html.DisplayNameFor(model => model.CzasPrzygotowania)</strong> <br /> @Html.DisplayFor(model => model.CzasPrzygotowania)</p>
+
+        <p><strong>@Html.DisplayNameFor(model => model.DataDodania)</strong> <br />@Html.DisplayFor(model => model.DataDodania)</p>
+
+        <p><strong>@Html.DisplayNameFor(model => model.Ocena)</strong> <br />@Html.DisplayFor(model => model.Ocena)</p>
+
+        <p><strong>@Html.DisplayNameFor(model => model.Skladniki)</strong></p>
+        <div>
+            @foreach (var skladniki in Model.Skladniki)
+            {
+                <ul>
+                    @Html.Raw(skladniki.Ilosc) @Html.Raw(skladniki.Produkt.NazwaProduktu)
+                </ul>
+            }
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h3>
+            <small class="pull-right"><strong>@Model.Komentarze.Count</strong></small>
+            <strong>Komentarze użytkowników</strong>
+        </h3>
+    </div><!-- /col-sm-12 -->
+</div>
+
+
+@if (Model.Komentarze.FirstOrDefault() == null)
+{
+    <small>
+        Ten przepis nie posiada jeszcze żadnych komentarzy
+    </small>
+}
+else
+{
+
+    <br />
+    foreach (var komentarz in Model.Komentarze)
+    {
+        <div class="row">
+            <div class="col-sm-1">
+                <div class="thumbnail">
+                    <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                </div><!-- /thumbnail -->
+            </div><!-- /col-sm-1 -->
+
+            <div class="col-sm-11">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>@komentarz.Uzytkownik.Email</strong> <span class="text-muted">skomentował @komentarz.DataDodania.ToLongDateString(), @komentarz.DataDodania.ToShortTimeString()</span>
+                    </div>
+                    <div class="panel-body">
+                        @komentarz.TrescKomentarza
+                    </div><!-- /panel-body -->
+                    <div class="panel-footer">
+                        <span class="text-muted">
+                            Stopień trudności:
+                            @if (komentarz.StopienTrudnosciOK)
+                            {
+                                <strong>OK!</strong>
+                            }
+                            else
+                            {
+                                <strong>Błędny</strong>
+                            }
+                            | Czas przygotowania:
+                            @if (komentarz.CzasPrzygotowaniaOK)
+                            {
+                                <strong>OK!</strong>
+                            }
+                            else
+                            {
+                                <strong>Błędny</strong>
+                            }
+                            <strong class="pull-right"> Ocena: @komentarz.Ocena</strong>
+                        </span>
+                    </div>
+                </div><!-- /panel panel-default -->
+            </div><!-- /col-sm-5 -->
+        </div>
+    }
+}
