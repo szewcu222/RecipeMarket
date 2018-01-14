@@ -1,4 +1,5 @@
 ﻿using RecipeMarket.DAL;
+using RecipeMarket.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,11 @@ namespace RecipeMarket.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            IQueryable<Przepis> przepisy = db.Przepisy.Take(10);
+
+            ViewBag.Odpowiedz = "Ostatnie przepisy";
+
+            return View(przepisy);
             
         }
 
