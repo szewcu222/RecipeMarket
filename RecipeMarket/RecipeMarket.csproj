@@ -290,6 +290,9 @@
     <Content Include="Views\Przepisy\Create.cshtml" />
     <Content Include="Views\Przepisy\Delete.cshtml" />
     <Content Include="Views\Przepisy\Edit.cshtml" />
+    <Content Include="Views\Przepisy\CreateComment.cshtml" />
+    <Content Include="Views\Przepisy\DeleteComment.cshtml" />
+    <Content Include="Views\Przepisy\EditComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201801082117107_InitialCreate.resx">

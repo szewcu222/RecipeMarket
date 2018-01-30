@@ -1,0 +1,81 @@
+﻿@model RecipeMarket.Models.Komentarz
+
+@{
+    ViewBag.Title = "DeleteComment";
+}
+
+<h2>Usuń komentarz</h2>
+
+<h3>Jesteś pewien, że chcesz usunąć?</h3>
+<div>
+    <h4>Komentarz</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Przepis.NazwaPrzepisu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Przepis.NazwaPrzepisu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Uzytkownik.Imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uzytkownik.Imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrescKomentarza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrescKomentarza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataDodania)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataDodania)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CzasPrzygotowaniaOK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CzasPrzygotowaniaOK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StopienTrudnosciOK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StopienTrudnosciOK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ocena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ocena)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Wróć do przepisu", "Details", "Przepisy", new { id = Model.PrzepisID })
+        </div>
+    }
+</div>

@@ -26,6 +26,9 @@ namespace Przepisy2.Controllers
         }
 
 
+
+        #region         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Akcje dla PRZEPISOW - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
         // GET: Przepisy
         public ActionResult Moje()
         {
@@ -227,6 +230,125 @@ namespace Przepisy2.Controllers
             return RedirectToAction("Moje");
         }
 
+
+
+        #endregion
+
+        #region         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Akcje dla KOMENTARZY - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        public ActionResult CreateComment(int id)
+        {
+            var komentarz = new Komentarz { PrzepisID = id };
+
+            return View(komentarz);
+        }
+
+
+        [HttpPost]
+        public ActionResult CreateComment(Komentarz komentarz)
+        {
+            var user = userManager.FindById(User.Identity.GetUserId());
+
+            komentarz.DataDodania = DateTime.Now;
+            komentarz.UzytkownikID = user.Id;
+
+            if (ModelState.IsValid)
+            {
+                db.Komentarze.Add(komentarz);
+                db.SaveChanges();
+                return RedirectToAction("Details", new { id = komentarz.PrzepisID });
+            }
+            else
+            {
+                return View(komentarz);
+            }
+        }
+
+        public ActionResult EditComment(int? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            }
+
+            var komentarz = db.Komentarze.Find(id);
+            if (komentarz == null)
+            {
+                return HttpNotFound();
+            }
+            var user = userManager.FindById(User.Identity.GetUserId());
+            if (user.Id == komentarz.UzytkownikID)
+            {
+                return View(komentarz);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+
+            }
+
+        }
+
+        [HttpPost, ActionName("EditComment")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditCommentConfirmation(Komentarz komentarz)
+        {
+            var user = userManager.FindById(User.Identity.GetUserId());
+
+            komentarz.DataDodania = DateTime.Now;
+            komentarz.UzytkownikID = user.Id;
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(komentarz).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Details", new { id = komentarz.PrzepisID });
+            }
+            else
+            {
+                return View(komentarz);
+            }
+        }
+
+        public ActionResult DeleteComment(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var komentarz = db.Komentarze.Find(id);
+            if (komentarz == null)
+            {
+                return HttpNotFound();
+            }
+            var user = userManager.FindById(User.Identity.GetUserId());
+            if (user.Id == komentarz.UzytkownikID)
+            {
+                return View(komentarz);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+
+            }
+
+        }
+
+        [HttpPost, ActionName("DeleteComment")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteCommentConfirmation(int id)
+        {
+            var komentarz = db.Komentarze.Find(id);
+            db.Komentarze.Remove(komentarz);
+            db.SaveChanges();
+            return RedirectToAction("Details", new { id = komentarz.PrzepisID });
+        }
+
+
+
+        #endregion
 
     }
 }
