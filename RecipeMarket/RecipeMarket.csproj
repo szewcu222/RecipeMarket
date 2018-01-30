@@ -218,6 +218,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Produkt.cs" />
     <Compile Include="Models\Przepis.cs" />
+    <Compile Include="Models\PrzepisyViewModel.cs" />
     <Compile Include="Models\Skladnik.cs" />
     <Compile Include="Models\StatusAkceptacji.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -285,6 +286,10 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Przepisy\Details.cshtml" />
+    <Content Include="Views\Przepisy\Moje.cshtml" />
+    <Content Include="Views\Przepisy\Create.cshtml" />
+    <Content Include="Views\Przepisy\Delete.cshtml" />
+    <Content Include="Views\Przepisy\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201801082117107_InitialCreate.resx">

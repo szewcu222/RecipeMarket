@@ -1,0 +1,78 @@
+﻿@model RecipeMarket.Models.PrzepisyViewModel
+
+@{
+    ViewBag.Title = "Edycja Przepisu";
+}
+
+<h2>Edycja przepisu</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Przepis.PrzepisID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Przepis.NazwaPrzepisu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Przepis.NazwaPrzepisu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Przepis.NazwaPrzepisu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Przepis.TrescPrzepisu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Przepis.TrescPrzepisu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Przepis.TrescPrzepisu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Przepis.CzasPrzygotowania, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Przepis.CzasPrzygotowania, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Przepis.CzasPrzygotowania, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Przepis.StopienTrudnosci, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Przepis.StopienTrudnosci, new { htmlAttributes = new { @class = "form-control", type = "number", min = "0", step = "1", max = "10" } })
+                @Html.ValidationMessageFor(model => model.Przepis.StopienTrudnosci, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Przepis.IsPremium, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Przepis.IsPremium)
+                    @Html.ValidationMessageFor(model => model.Przepis.IsPremium, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Przepis.Kategorie, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Kategoria.KategoriaID, Model.ListaKategorii, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Zapisz" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<div>
+    @Html.ActionLink("Wróć do listy", "Moje", "Przepisy")
+</div>

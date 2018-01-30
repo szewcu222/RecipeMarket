@@ -1,0 +1,43 @@
+﻿@model  IQueryable<RecipeMarket.Models.Przepis>
+@{
+    ViewBag.Title = "Moje przepisy";
+}
+
+<h2>Moje przepisy</h2>
+<button class="btn btn-success white-text"><span class="glyphicon glyphicon-plus"></span> @Html.ActionLink("Utwórz", "Create", "Przepisy", new { @class = "white-text" })</button>
+<br />
+
+<div class="row">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().NazwaPrzepisu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Kategorie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().DataDodania)
+            </th>
+            <th></th>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NazwaPrzepisu)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Kategorie.FirstOrDefault().NazwaKategorii)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataDodania)
+                    </td>
+                    <td>@Html.ActionLink("Pokaż szczegóły", "Details", "Przepisy", new { id = item.PrzepisID }, null) </td>
+                </tr>
+            }
+        }
+    </table>
+</div>

@@ -1,0 +1,88 @@
+﻿@model RecipeMarket.Models.Przepis
+
+@{
+    ViewBag.Title = "Usunięcie przepisu";
+}
+
+<h2>Usunąć?</h2>
+
+<h3>Czy na pewno chcesz usunąć przepis?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Uzytkownicy.Imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uzytkownicy.Imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NazwaPrzepisu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NazwaPrzepisu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrescPrzepisu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrescPrzepisu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CzasPrzygotowania)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CzasPrzygotowania)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StopienTrudnosci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StopienTrudnosci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPremium)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsPremium)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataDodania)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataDodania)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusAkceptacji)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusAkceptacji)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-default" /> |
+            @Html.ActionLink("Wróć do listy", "Index", "Home")
+        </div>
+    }
+</div>
