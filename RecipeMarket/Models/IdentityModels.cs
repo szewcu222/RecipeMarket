@@ -37,7 +37,7 @@ namespace RecipeMarket.Models
     public class ApplicationDbContext : IdentityDbContext<Uzytkownik>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("PrzepisyContext", throwIfV1Schema: false)
         {
         }
 

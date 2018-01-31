@@ -12,7 +12,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System.Net;
 using System.Net.Mime;
 
-namespace Przepisy2.Controllers
+namespace RecipeMarket.Controllers
 {
     public class PrzepisyController : Controller
     {
@@ -29,17 +29,7 @@ namespace Przepisy2.Controllers
 
         #region         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Akcje dla PRZEPISOW - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        // GET: Przepisy
-        public ActionResult Moje()
-        {
-            var user = userManager.FindById(User.Identity.GetUserId());
-            IQueryable<Przepis> listaPrzepisowUzytkownika = db.Przepisy.Where(m => m.UzytkownikID == user.Id);
-
-            if (listaPrzepisowUzytkownika.Any())
-                return View(listaPrzepisowUzytkownika);
-            else
-                return View();
-        }
+       
 
         public ActionResult Details(int? id)
         {
@@ -55,6 +45,18 @@ namespace Przepisy2.Controllers
             }
 
             return View(przepis);
+        }
+
+        // GET: Przepisy
+        public ActionResult Moje()
+        {
+            var user = userManager.FindById(User.Identity.GetUserId());
+            IQueryable<Przepis> listaPrzepisowUzytkownika = db.Przepisy.Where(m => m.UzytkownikID == user.Id);
+
+            if (listaPrzepisowUzytkownika.Count() > 0)
+                return View(listaPrzepisowUzytkownika);
+            else
+                return View();
         }
 
         public PrzepisyViewModel PopulateSelectList(PrzepisyViewModel przepisyViewModel)
@@ -80,12 +82,8 @@ namespace Przepisy2.Controllers
 
         public ActionResult Create()
         {
-
-
             return View(PopulateSelectList(new PrzepisyViewModel()));
         }
-
-
 
         [HttpPost]
         public ActionResult Create(PrzepisyViewModel przepisyViewModel)

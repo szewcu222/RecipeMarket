@@ -44,7 +44,7 @@ namespace RecipeMarket.DAL
 
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - STWORZENIE UŻYTKOWNIKÓW 'ADMIN' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            var user = new Uzytkownik() { UserName = "admin@przepisy.pl", Email = "graczz.mufc@gmail.com", DataRejestracji = DateTime.Now, OstatniaAktywnosc = DateTime.Now };
+            var user = new Uzytkownik() { UserName = "admin@przepisy.pl", Email = "admin@przepisy.pl", DataRejestracji = DateTime.Now, OstatniaAktywnosc = DateTime.Now };
 
             if (UserManager.Create(user, "P@ssw0rd").Succeeded)
             {

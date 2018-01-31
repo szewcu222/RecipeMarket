@@ -151,7 +151,7 @@ namespace RecipeMarket.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new Uzytkownik { UserName = model.Email, Email = model.Email };
+                var user = new Uzytkownik { UserName = model.Email, Email = model.Email, DataRejestracji = DateTime.Now, OstatniaAktywnosc = DateTime.Now };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

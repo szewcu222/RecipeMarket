@@ -35,5 +35,19 @@ namespace RecipeMarket.Controllers
 
             return View();
         }
+
+        public ActionResult Search(string searchString)
+        {
+            if (!String.IsNullOrEmpty(searchString) && searchString != "Wyszukaj fraze")
+            {
+                ViewBag.Odpowiedz = $"Przepisy z frazą '{searchString}'";
+                IQueryable<Przepis> przepisy = db.Przepisy.Where(s => s.NazwaPrzepisu.Contains(searchString)).Take(10);
+                return View("Index", przepisy);
+
+            }
+            return RedirectToAction("Index");
+
+
+        }
     }
 }
